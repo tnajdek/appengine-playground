@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Visibility</th>
+			<th>Date Created</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for post in object_list %}
+		<tr>
+			<td>{{ post.title }}</td>
+			<td>{{ post.author }}</td>
+			<td>{{ post.get_visibility_display }}</td>
+			<td>{{ post.date_created }}</td>
+			<td>
+				<a href="" class="btn btn-primary">
+					<span class="icon-search"></span>
+				</a>
+				<a href="{% url blog:post-editform pk=post.id %}" class="btn btn-primary">
+					<span class="icon-pencil"></span>
+				</a>
+				<a href="{% url blog:post-deleteform pk=post.id %}" class="btn btn-danger">
+					<span class="icon-remove"></span>
+				</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% if is_paginated %}
+	<div class="pagination">
+		<ul>
+			{% for page in page_obj.paginator.page_range %}
+				{% if page == page_obj.number %}
+					<li class="active"><a href="#">{{ page }}</a></li>
+				{% else %}
+					<li><a href="?page={{ page }}">{{ page }} </a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}
+
+{% endblock %}

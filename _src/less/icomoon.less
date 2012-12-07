@@ -1,0 +1,45 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('@{static}/fonts/icomoon.eot');
+	src:url('@{static}/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('@{static}/fonts/icomoon.svg#icomoon') format('svg'),
+		url('@{static}/fonts/icomoon.woff') format('woff'),
+		url('@{static}/fonts/icomoon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'icomoon';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: 'icomoon';
+	font-style: normal;
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-pencil:before {
+	content: "\e000";
+}
+.icon-remove:before {
+	content: "\e001";
+}
+.icon-search:before {
+	content: "\e002";
+}
+.icon-user:before {
+	content: "\e003";
+}
+.icon-clipboard:before {
+	content: "\e004";
+}

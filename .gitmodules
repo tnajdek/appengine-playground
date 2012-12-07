@@ -13,3 +13,12 @@
 [submodule "django-dbindexer"]
 	path = django-dbindexer
 	url = https://github.com/django-nonrel/django-dbindexer.git
+[submodule "django-social-auth"]
+	path = django-social-auth
+	url = https://github.com/omab/django-social-auth.git
+[submodule "python-openid"]
+	path = python-openid
+	url = https://github.com/openid/python-openid
+[submodule "python-oauth2"]
+	path = python-oauth2
+	url = https://github.com/simplegeo/python-oauth2.git

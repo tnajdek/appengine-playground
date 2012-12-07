@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="alert alert-warning">
+	 <strong>Please Confirm.</strong> You're about to remove post <strong>{{ post.title }}</strong> by <strong>{{ post.author }}</strong>. Are you sure you want to continue? This operation cannot be reverted!
+	 <form method="post" action="" class="right">
+	 	<a href="{% url blog:post-list %}" class="btn">Cancel</a>
+	 	<button class="btn btn-danger" type="submit">Delete</button>
+	 </form>
+</div>
+
+{% endblock %}
