@@ -8,7 +8,7 @@
 			epicid = this.id+'-epiceditor',
 			epiconfig = {
 				container: epicid,
-				basePath: '/static/epiceditor/',
+				basePath: '/static/epiceditor',
 				clientSideStorage: false,
 				file: {
 					name: 'epiceditor',
