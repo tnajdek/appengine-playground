@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% load markdown2html %}
+{% block content %}
+	<h1>{{ post.title }}</h1>
+	<div>{{ post.text|markdown2html }}</div>
+{% endblock %}

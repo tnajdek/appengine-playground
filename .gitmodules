@@ -22,3 +22,6 @@
 [submodule "python-oauth2"]
 	path = python-oauth2
 	url = https://github.com/simplegeo/python-oauth2.git
+[submodule "Python-Markdown"]
+	path = Python-Markdown
+	url = https://github.com/waylan/Python-Markdown.git

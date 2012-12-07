@@ -23,7 +23,7 @@
 		editor = new EpicEditor(epiconfig);
 		editor.load();
 		editor.on('update', function(e) {
-			$this.val(e.content);
+			$this.val(editor.exportFile());
 		});
 
 	});

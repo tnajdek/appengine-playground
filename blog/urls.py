@@ -1,8 +1,9 @@
 from django.conf.urls.defaults import *
-from django.views.generic import TemplateView, ListView
+from django.views.generic import ListView, DetailView
 from models import Post
 from forms import PostForm
 from views import CreateView, UpdateView, DeleteView
+from django.views.generic.simple import redirect_to
 
 urlpatterns = patterns('',
 	# Somehow I don't like django contrib admin
@@ -26,5 +27,17 @@ urlpatterns = patterns('',
 		model=Post
 		), name="post-deleteform"
 	),
-	url(r'^$', TemplateView.as_view(template_name="home.html")),
+	url(r'^admin/$', redirect_to, {'url': '/admin/post/'}),
+	url(r'^$', ListView.as_view(
+		paginate_by=10,
+		model=Post,
+		template_name="blog/index.html"
+		), name="index"
+	),
+	url(r'^(?P<slug>\w+)/$', DetailView.as_view(
+		model=Post,
+		slug_field='permalink',
+		template_name="blog/post.html"
+		), name="post"
+	),
 )

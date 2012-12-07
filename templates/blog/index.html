@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load markdown2html %}
+{% block content %}
+{% for post in object_list %}
+	<h1>{{ post.title }}</h1>
+	<div>{{ post.text|markdown2html }}</div>
+	<a href="{% url blog:post slug=post.permalink %}">More</a>
+{% endfor %}
+{% endblock %}
