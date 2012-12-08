@@ -1,9 +1,42 @@
 {% extends "base.html" %}
-{% load markdown2html %}
 {% block content %}
-{% for post in object_list %}
-	<h1>{{ post.title }}</h1>
-	<div>{{ post.text|markdown2html }}</div>
-	<a href="{% url blog:post slug=post.permalink %}">More</a>
-{% endfor %}
+	{% for post in object_list %}
+		{% include "blog/_partials/post.html" %}
+	{% endfor %}
+
+{% if is_paginated %}
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span4 meta">
+				<h2>Want more?</h2>
+				<ul>
+					{% if page_obj.has_previous %}
+						<li>
+							<a href="?page={{ page_obj.previous_page_number }}">
+								Newer Posts
+								<span class="accent-color icon icon-arrow-left"></span>
+							</a>
+						</li>
+					{% endif %}
+					{% if page_obj.has_next %}
+					<li>
+						<a href="?page={{ page_obj.next_page_number }}">
+							Older Posts
+							<span class="accent-color icon icon-arrow-right"></span>
+						</a>
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+{% endblock %}
+{% block post-content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		{% include "blog/_partials/post-content-menu.html" %}
+	</div>
+</div>
 {% endblock %}

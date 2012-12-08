@@ -19,6 +19,8 @@ class Post(models.Model):
 	text = models.TextField()
 	author = models.ForeignKey(User)
 	permalink = models.CharField(max_length=200, unique=True)
+	class Meta:
+		ordering = ['-date_created']
 
 
 class Tag(models.Model):

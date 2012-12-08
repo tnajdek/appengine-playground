@@ -24,9 +24,13 @@ from django import forms
 class PostForm(ModelForm):
 	class Meta:
 		model = Post
-		exclude = ('author',)
+		fields = ('title', 'permalink', 'visibility', 'text')
 		widgets = {
-			'text': forms.Textarea(attrs={
-				'data-provide': 'markdown'
+			'permalink': forms.TextInput(attrs={
+				'data-provide': 'permalink',
+				'data-based-on': 'title'
 			}),
+			'text': forms.Textarea(attrs={
+				'data-provide': 'markdown',
+			})
 		}

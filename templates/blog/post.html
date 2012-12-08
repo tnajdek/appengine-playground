@@ -1,32 +1,12 @@
 {% extends "base.html" %}
-{% load markdown2html %}
 {% block content %}
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span4 meta">
-			<h1>{{ post.title }}</h1>
-			<ul>
-				<li>{{ post.author }} <span class="accent-color icon icon-user"></span></li>
-				<li>{{ post.date_created }} <span class="accent-color icon icon-clock"></span></li>
-			</ul>
-		</div>
-		<div class="span8">
-			<div>{{ post.text|markdown2html }}</div>
-		</div>
-	</div>
-</div>
+	{% include "blog/_partials/post.html" %}
 {% endblock %}
 {% block post-content %}
 {% if user.is_authenticated %}
 <div class="container-fluid">
 	<div class="row-fluid">
-		<nav class="offset6 span6 post-menu">
-			<ul>
-				<li><a href="{% url blog:admin %}"><span class="icon icon-user"> {{user.username}}</a></li>
-				<li><a href="{% url blog:post-editform pk=post.id %}"><span class="icon icon-pencil"> Edit this post</a></li>
-				<li><a href=""><span class="icon icon-switch"> Logout</a></li>
-			</ul>
-		</nav>
+		{% include "blog/_partials/post-content-menu.html" %}
 	</div>
 </div>
 

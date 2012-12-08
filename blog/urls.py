@@ -40,12 +40,12 @@ urlpatterns = patterns('',
 		), name="admin"
 	),
 	url(r'^$', ListView.as_view(
-		paginate_by=10,
+		paginate_by=5,
 		model=Post,
 		template_name="blog/index.html"
 		), name="index"
 	),
-	url(r'^(?P<slug>\w+)/$', DetailView.as_view(
+	url(r'^(?P<slug>[a-z0-9\-]+)/$', DetailView.as_view(
 		model=Post,
 		slug_field='permalink',
 		template_name="blog/post.html"

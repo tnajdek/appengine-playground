@@ -1,0 +1,25 @@
+<nav class="offset6 span6 post-menu right">
+	<ul>
+		<li>
+			<a href="{% url blog:admin %}">
+				{{user.username}}&nbsp;
+				<span class="icon icon-user"></span>
+			</a> 
+			
+		</li>
+		{% if post.id %}
+			<li>
+				<a href="{% url blog:post-editform pk=post.id %}">
+					Edit this post&nbsp;
+					<span class="icon icon-pencil"></span>
+				</a>
+			</li>
+		{% endif %}
+		<li>
+			<a href="">
+				Logout&nbsp;
+				<span class="icon icon-switch">
+			</a> 
+		</li>
+	</ul>
+</nav>
