@@ -24,8 +24,9 @@
 
 		<div class="control-group">
 			<div class="controls">
-				<input type="submit" class="btn" name="postaction" value="Save" />
-				<input type="submit" class="btn" name="postaction" value="Save &amp; Back" />
+				<input type="submit" class="btn btn-primary" name="postaction" value="Save" />
+				<input type="submit" class="btn btn-primary" name="postaction" value="Save &amp; Back" />
+				<a href="{% url blog:post-list %}" class="btn btn-warning">Cancel</a>
 			</div>
 		  </div>
 		</form>
