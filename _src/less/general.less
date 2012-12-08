@@ -1,3 +1,137 @@
+// variable to control color scheme
+@accent:                 #623083;
+
+// sticky footer
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -7em;
+}
+
+#push, footer {
+    min-height: 7em;
+}
+
 .right {
 	text-align: right
+}
+
+// general stuff
+body {
+	font-family: "ContaxSans55Regular";
+	font-size: 1em;
+	line-height: 1.5em;
+	padding:0;
+	-webkit-font-smoothing: subpixel-antialiased;
+	font-smooth: always;
+}
+
+::selection {
+	background:lighten(@accent, 30%);
+}
+
+::-moz-selection {
+	background:lighten(@accent, 30%);
+}
+
+#wrap>.container-fluid {
+	padding:0;
+}
+
+.main {
+	text-align: center;
+}
+
+.main>.container-fluid {
+	text-align: left;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.meta {
+	text-align: right;
+}
+
+.meta > h1 {
+	font-family: "ExistenceLight";
+	text-transform:uppercase;
+	font-size: 2.5em;
+}
+
+.meta>ul {
+	list-style: none;
+}
+
+.accent-color {
+	color:@accent;
+}
+
+header {
+	// height: 5em;
+	background-color: darken(@accent, 30%);
+	border-bottom: 0.33em solid @accent;
+	color: lighten(@accent, 55%);
+	padding-bottom: 20px;
+
+	h1 {
+		font-size: 2.25em;
+		font-family: UbuntuTitlingBold;
+		padding: 0;
+		margin: 0.33em 0 0 1em;
+	}
+
+	.logo {
+		padding-left:2em;
+	}
+
+	.headline {
+		font-size: 1.5em;
+		padding-left: 12em;
+	}
+} 
+
+
+footer {	
+	.box-sizing(border-box); // sticky + padding needs that
+	background-color: darken(@accent, 30%);
+	border-top: 0.66em solid @accent;
+	color: lighten(@accent, 55%);	
+	padding: 1em 0 1em 0;
+
+	a:hover {
+		color:lighten(@linkColor, 15%);
+		text-decoration: none;
+	}
+
+	.social {
+		text-align: right;
+	}
+
+	.post-menu ul, .social ul {
+		list-style: none;
+		li {
+			margin-top: 0.5em;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	header {
+		h1 {
+			font-size: 2em;
+			margin: 0.5em 0 0 0;
+		}
+		.headline {
+			padding-left: 8em;
+		}
+	}
+
+	footer .social {
+		padding-right: 0.7em;
+	}
 }

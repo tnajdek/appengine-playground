@@ -9,18 +9,55 @@
 		<link rel="shortcut icon" href="{{STATIC_URL}}/favicon.ico">
 	</head>
 	<body>
-		<header>
-			{{ user }}
-		</header>
-		<section class="main">
-			{% block content %}
-			{% endblock %}
-		</section>
-		<footer>
-
+		<div id="wrap">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<header>
+						<div class="row-fluid">
+							<div class="span8 offset4 logo">
+								<h1><span class="icon icon-potato"></span>
+								Instant Potato Soup
+								</h1>
+								<p class="headline">
+									Just add water!
+								</p>
+							</div>
+						</div>
+					</header>
+					<section class="main">
+						{% block content %}
+						{% endblock %}
+					</section>
+				</div>
+			</div>
+			<div id="push"></div>
+		</div>
+			<footer>
+			<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span4 social">
+					<p>
+						<a href="http://twitter.com/tnajdek">
+							Follow me
+							<span class="icon icon-twitter"></span>
+						</a>
+					</p>
+					<p>
+						<a href="https://github.com/tnajdek/">
+							Fork me
+							<span class="icon icon-github"></span>
+						</a>
+					</p>
+				</div>
+				<div class="span8">
+					{% block post-content %}
+					{% endblock %}
+				</div>
+			</div>
+			</div>
 		</footer>
-	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.js"></script>
-	{% block delayed_js %}
-	{% endblock %}
+		<script type="text/javascript" src="{{STATIC_URL}}js/jquery.js"></script>
+		{% block delayed_js %}
+		{% endblock %}
 	</body>
 </html>

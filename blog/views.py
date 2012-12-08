@@ -1,5 +1,5 @@
 from django.views.generic import *
-from django.core.urlresolvers import reverse, resolve
+from django.core.urlresolvers import reverse
 
 
 class SuccessUrlMixin(object):

@@ -1,9 +1,17 @@
 from django.conf.urls.defaults import *
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, RedirectView
 from models import Post
 from forms import PostForm
 from views import CreateView, UpdateView, DeleteView
-from django.views.generic.simple import redirect_to
+
+# Django 1.3 doesn't get to be lazy!
+try:
+	from django.core.urlresolvers import reverse_lazy
+except ImportError:
+	from django.core.urlresolvers import reverse
+	from django.utils.functional import lazy
+	reverse_lazy = lambda x: lazy(reverse, str)(x)
+
 
 urlpatterns = patterns('',
 	# Somehow I don't like django contrib admin
@@ -27,7 +35,10 @@ urlpatterns = patterns('',
 		model=Post
 		), name="post-deleteform"
 	),
-	url(r'^admin/$', redirect_to, {'url': '/admin/post/'}),
+	url(r'^admin/$', RedirectView.as_view(
+		url=reverse_lazy('blog:post-list')
+		), name="admin"
+	),
 	url(r'^$', ListView.as_view(
 		paginate_by=10,
 		model=Post,
