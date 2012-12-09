@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container-fluid">
 	<div class="row-fluid">
-		<form method="post" action=""  class="form-horizontal">
+		<form method="post" action="" class="form-horizontal">
 			{% if form.non_field_errors %}
 				<div class="alert alert-error">
 					{{ form.non_field_errors }}
@@ -24,8 +24,8 @@
 
 		<div class="control-group">
 			<div class="controls">
-				<input type="submit" class="btn btn-primary" name="postaction" value="Save" />
-				<input type="submit" class="btn btn-primary" name="postaction" value="Save &amp; Back" />
+				<button type="submit" class="btn btn-primary" name="postaction" value="Save" >Save</button>
+				<button type="submit" class="btn btn-primary" name="postaction" value="Save &amp; Back" >Save &amp; Back</button>
 				<a href="{% url blog:post-list %}" class="btn btn-warning">Cancel</a>
 			</div>
 		  </div>

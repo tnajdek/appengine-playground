@@ -1,10 +1,17 @@
 <nav class="offset6 span6 post-menu right">
 	<ul>
 		<li>
+			{% if user.is_authenticated %}
 			<a href="{% url blog:admin %}">
 				{{user.username}}&nbsp;
 				<span class="icon icon-user"></span>
 			</a> 
+			{% else %}
+			<a href="{% url blog:admin %}">
+				Sign In&nbsp;
+				<span class="icon icon-user"></span>
+			</a> 
+			{% endif %}
 			
 		</li>
 		{% if post.id %}
@@ -16,7 +23,7 @@
 			</li>
 		{% endif %}
 		<li>
-			<a href="">
+			<a href="{% url auth_logout %}">
 				Logout&nbsp;
 				<span class="icon icon-switch">
 			</a> 

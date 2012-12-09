@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from django.views.generic import ListView, DetailView, RedirectView
+from django.views.generic import ListView, DetailView, RedirectView, TemplateView
 from models import Post
 from forms import PostForm
 from views import CreateView, UpdateView, DeleteView
@@ -44,6 +44,10 @@ urlpatterns = patterns('',
 		model=Post,
 		template_name="blog/index.html"
 		), name="index"
+	),
+	url(r'^login/$', TemplateView.as_view(
+		template_name="blog/login.html"
+		), name="login"
 	),
 	url(r'^(?P<slug>[a-z0-9\-]+)/$', DetailView.as_view(
 		model=Post,

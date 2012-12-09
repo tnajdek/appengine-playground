@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span4 meta">
+			<h1>Sign In</h1>
+			<p>You can login with any of the providers listed here (no registration required!). Alternatively you can use the classic form to login with us. If you don't have an account yet you can <a href="{% url registration_register %}">register for one</a>.</p>
+		</div>
+		<div class="span8">
+			<div class="social-login-options clearfix center">
+						<a class="btn btn-inverse" href="{% url socialauth_begin 'google' %}">
+							<span class="icon icon-google"></span>
+							Google
+						</a>
+						<a class="btn btn-inverse" href="{% url socialauth_begin 'github' %}">
+							<span class="icon icon-github"></span>
+							Github
+						</a>
+						<a class="btn btn-inverse" href="{% url socialauth_begin 'facebook' %}">
+							<span class="icon icon-facebook"></span>
+							Facebook
+						</a>
+						<a class="btn btn-inverse" href="{% url socialauth_begin 'twitter' %}">
+							<span class="icon icon-twitter"></span>
+							Twitter
+						</a>
+			</div>
+			<form method="post" class="form-horizontal">
+			{% csrf_token %}
+			{% if form.non_field_errors %}
+				<div class="alert alert-error">
+					{{ form.non_field_errors }}
+				</div>
+			{% endif %}
+			{% for field in form %}
+					{% if field.errors %}
+						<div class="alert alert-error">
+							{{ field.errors }}
+						</div>
+					{% endif %}
+					<label class="control-label" for="id_{{ field.html_name }}">
+						{{ field.label }}
+					</label>
+					<div class="controls">
+						{{ field }}
+					</div>
+			{% endfor %}
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn btn-inverse" >Login</button>
+						<a href="{% url registration_register %}" type="submit" class="btn btn-inverse" >Register</a>
+					</div>
+				</div>
+				<input type="hidden" name="next" value="{{ next }}" />
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

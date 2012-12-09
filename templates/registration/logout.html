@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span4 meta">
+			<h1>Signed Out</h1>
+		</div>
+		<div class="span8">
+			<p>You've been signed out. <a href="{% url auth_login %}">Sign in</a>.</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

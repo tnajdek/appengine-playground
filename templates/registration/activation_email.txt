@@ -1,0 +1,9 @@
+Hi!
+
+Your account is ready. All you need to do is to activate it by following the link:
+
+http://{{ site.domain }}{% url registration_activate activation_key=activation_key %}
+
+Kind Regards
+--
+{{ site.doname }}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span4 meta">
+		<h1>Register</h1>
+			<p>
+				You can use this form to register with us. After registering you will gain full access to the website and will be able to store your decks. To speed up the process you can use <a href="{% url auth_login %}">sign in with a third-party provider</a> instead.
+			</p>
+		</div>
+		<div class="span8">
+			<form method="post" class="form-horizontal">
+			{% csrf_token %}
+			{% if form.non_field_errors %}
+				<div class="alert alert-error">
+					{{ form.non_field_errors }}
+				</div>
+			{% endif %}
+			{% for field in form %}
+					{% if field.errors %}
+						<div class="alert alert-error">
+							{{ field.errors }}
+						</div>
+					{% endif %}
+					<label class="control-label" for="id_{{ field.html_name }}">
+						{{ field.label }}
+					</label>
+					<div class="controls">
+						{{ field }}
+					</div>
+			{% endfor %}
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn btn-inverse" >Register</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

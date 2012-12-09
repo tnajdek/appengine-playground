@@ -26,7 +26,7 @@ Instant Potato Soup can be deployed on Google app engine with the folowing steps
     ```
 
 2. Edit app.yaml, put your application identifier and optionally version etc.
-3. Create file sensitive_settings.py in root app folder with the following contents. SECRET_KEY can be anything but should be [unique and secret](https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY). You will need to create apps with [Twitter](https://dev.twitter.com/apps/new) and [Facebook](https://developers.facebook.com/apps) and update values below:
+3. Create file sensitive_settings.py in root app folder with the following contents. SECRET_KEY can be anything but should be [unique and secret](https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY). You will need to create apps with [Github](https://github.com/settings/applications/new), [Twitter](https://dev.twitter.com/apps/new) and [Facebook](https://developers.facebook.com/apps) and update values below:
 
     ```
     SECRET_KEY = '<give keyboard to your kid/cat/dog to get some random characters>'
@@ -34,6 +34,15 @@ Instant Potato Soup can be deployed on Google app engine with the folowing steps
     TWITTER_CONSUMER_SECRET = ''
     FACEBOOK_APP_ID = ''
     FACEBOOK_API_SECRET = ''
+    GITHUB_APP_ID = ''
+    GITHUB_API_SECRET = ''
+
+    DEFAULT_FROM_EMAIL = ''
+    EMAIL_HOST = ''
+    EMAIL_PORT = '587'
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
     ```
 
 4. Deploy to appengine:

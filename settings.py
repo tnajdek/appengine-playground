@@ -25,6 +25,7 @@ INSTALLED_APPS = (
 	'dbindexer',
 	'blog',
 	'social_auth',
+	'registration',
 
 
 	# djangoappengine should come last, so it can override a few manage.py commands
@@ -77,17 +78,20 @@ STATICFILES_DIRS = (
 AUTHENTICATION_BACKENDS = (
 	'django.contrib.auth.backends.ModelBackend',
 	'social_auth.backends.facebook.FacebookBackend',
+	'social_auth.backends.contrib.github.GithubBackend',
 	'social_auth.backends.google.GoogleBackend',
 	'social_auth.backends.twitter.TwitterBackend',
 )
 
 
-LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/tournament/view'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/account/login/error'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/account/welcome/'
 SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/account/association/'
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account/disconnection/'
+
+ACCOUNT_ACTIVATION_DAYS = 7
 
 import random
 SOCIAL_AUTH_DEFAULT_USERNAME = lambda: random.choice(['Darth Vader', 'Obi-Wan Kenobi', 'R2-D2', 'C-3PO', 'Yoda'])
