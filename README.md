@@ -17,13 +17,13 @@ Instructions (Just add water!)
 
 Instant Potato Soup can be deployed on Google app engine with the folowing steps
 
-# Obtain source code & dependencies 
+1. Obtain source code & dependencies 
 	git clone https://github.com/tnajdek/appengine-playground.git
 	git submodule init
 	git submodule update
 
-# Edit app.yaml, put your application identifier and optionally version etc.
-# Create file sensitive_settings.py in root app folder with the following contents. SECRET_KEY can be anything but should be [https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY](unique and secret). You will need to create apps with [https://dev.twitter.com/apps/new](Twitter) and [https://developers.facebook.com/apps](Facebook) and update values below:
+2. Edit app.yaml, put your application identifier and optionally version etc.
+3. Create file sensitive_settings.py in root app folder with the following contents. SECRET_KEY can be anything but should be [https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY](unique and secret). You will need to create apps with [https://dev.twitter.com/apps/new](Twitter) and [https://developers.facebook.com/apps](Facebook) and update values below:
 
 	SECRET_KEY = '<give keyboard to your kid/cat/dog to get some random characters>'
 
@@ -33,7 +33,7 @@ Instant Potato Soup can be deployed on Google app engine with the folowing steps
 	FACEBOOK_API_SECRET = ''
 
 
-# Deploy to appengine:
+4. Deploy to appengine:
 	appcfg.py update .
 
 That's it folks!
