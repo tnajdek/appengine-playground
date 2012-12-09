@@ -19,6 +19,7 @@ Instant Potato Soup can be deployed on Google app engine with the folowing steps
 
 1. Obtain source code & dependencies
 
+
     git clone https://github.com/tnajdek/appengine-playground.git
     git submodule init
     git submodule update
@@ -34,12 +35,10 @@ Instant Potato Soup can be deployed on Google app engine with the folowing steps
     FACEBOOK_APP_ID = ''
     FACEBOOK_API_SECRET = ''
 
-
 4. Deploy to appengine:
 
 
     appcfg.py update .
-
 
 That's it folks!
 
