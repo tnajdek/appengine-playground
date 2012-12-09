@@ -36,3 +36,6 @@ nosetests.xml
 
 #appengine
 .gaedata
+
+# sensitive settings
+sensitive_settings.py
