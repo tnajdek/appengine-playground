@@ -15,6 +15,9 @@
 					name: 'epiceditor',
 					defaultContent: $this.val()
 				},
+				theme: {
+					preview: '/../css/blog.css'
+				},
 				focusOnLoad: false
 			},
 			editor;
