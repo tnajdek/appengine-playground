@@ -22,11 +22,13 @@
 				</a>
 			</li>
 		{% endif %}
+		{% if user.is_authenticated %}
 		<li>
 			<a href="{% url auth_logout %}">
 				Logout&nbsp;
 				<span class="icon icon-switch">
 			</a> 
 		</li>
+		{% endif %}
 	</ul>
 </nav>

@@ -1,0 +1,19 @@
+{% extends "admin.html" %}
+{% block admin-content %}
+	{% if user.social_auth.all %}
+	<p>Currently you can use the following providers to login:
+		<ul>
+		{% for social in user.social_auth.all %}
+			<li>{{social.provider }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+	{% if potential_providers %}
+		<p>You can associate your account with any of the providers:</p>
+		<ul>
+		{% for social in potential_providers %}
+			<li><a href="{% url socialauth_associate_begin social %}">{{ social }}</a></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}

@@ -1,5 +1,9 @@
 from django.views.generic import *
 from django.core.urlresolvers import reverse
+from django.conf import settings
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from social_auth import backends
 
 
 class SuccessUrlMixin(object):
@@ -27,3 +31,15 @@ class UpdateView(SuccessUrlMixin, UpdateView):
 
 class DeleteView(SuccessUrlMixin, DeleteView):
 	pass
+
+
+@login_required
+def admin_home(request):
+	potential_providers = backends.get_backends().keys()
+	for social in request.user.social_auth.all():
+		if social.provider in potential_providers:
+			potential_providers = [x for x in potential_providers if x != social.provider]
+
+	return render(request, 'admin_home.html', {
+		'potential_providers': potential_providers
+	})

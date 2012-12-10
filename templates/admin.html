@@ -1,4 +1,43 @@
 {% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span4 meta">
+			<h1>Admin</h1>
+			<ul>
+				<li>
+					<a href="{% url blog:admin %}">
+						Your Account&nbsp;
+						<span class="icon icon-home"></span>
+					</a>
+				</li>
+				<li>
+					<a href="{% url blog:post-list %}">
+						Manage Posts&nbsp;
+						<span class="icon icon-copy"></span>
+					</a>
+				</li>
+				<li>
+					<a href="{% url blog:index %}">
+						Blog Homepage&nbsp;
+						<span class="icon icon-newspaper"></span>
+					</a>
+				</li>
+				<li>
+					<a href="{% url auth_logout %}">
+					Logout&nbsp;
+					<span class="icon icon-switch">
+					</a> 
+				</li>
+			</ul>
+		</div>
+		<div class="span8">
+			{% block admin-content %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock %}
 {% block delayed_js %}
 <script type="text/javascript" src="{{STATIC_URL}}js/epiceditor.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/admin.js"></script>

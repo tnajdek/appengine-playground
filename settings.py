@@ -38,7 +38,7 @@ MIDDLEWARE_CLASSES = (
 	'django.middleware.common.CommonMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware'
+	'social_auth.middleware.SocialAuthExceptionMiddleware'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -84,10 +84,10 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/account/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_ERROR_URL = '/account/login/error'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/account/welcome/'
+LOGIN_ERROR_URL = '/login/error'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/admin/'
 SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/account/association/'
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account/disconnection/'
 
@@ -102,3 +102,5 @@ try:
 except ImportError:
 	import sys
 	print >>sys.stderr, 'Could not import from sensitive_settings, social login will not work'
+
+DEBUG = False

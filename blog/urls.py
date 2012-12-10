@@ -2,7 +2,8 @@ from django.conf.urls.defaults import *
 from django.views.generic import ListView, DetailView, RedirectView, TemplateView
 from models import Post
 from forms import PostForm
-from views import CreateView, UpdateView, DeleteView
+from views import CreateView, UpdateView, DeleteView, admin_home
+from django.contrib.auth.decorators import login_require
 
 # Django 1.3 doesn't get to be lazy!
 try:
@@ -35,19 +36,12 @@ urlpatterns = patterns('',
 		model=Post
 		), name="post-deleteform"
 	),
-	url(r'^admin/$', RedirectView.as_view(
-		url=reverse_lazy('blog:post-list')
-		), name="admin"
-	),
+	url(r'^admin/$', admin_home, name="admin"),
 	url(r'^$', ListView.as_view(
 		paginate_by=5,
 		model=Post,
 		template_name="blog/index.html"
 		), name="index"
-	),
-	url(r'^login/$', TemplateView.as_view(
-		template_name="blog/login.html"
-		), name="login"
 	),
 	url(r'^(?P<slug>[a-z0-9\-]+)/$', DetailView.as_view(
 		model=Post,
@@ -55,4 +49,7 @@ urlpatterns = patterns('',
 		template_name="blog/post.html"
 		), name="post"
 	),
+	url('^login/error/$', TemplateView.as_view(
+		template_name="login-error.html"
+	)),
 )

@@ -1,35 +1,31 @@
 {% extends "admin.html" %}
-{% block content %}
-<div class="container-fluid">
-	<div class="row-fluid">
-		<form method="post" action="" class="form-horizontal">
-			{% if form.non_field_errors %}
-				<div class="alert alert-error">
-					{{ form.non_field_errors }}
-				</div>
-			{% endif %}
-		{% for field in form %}
-			{% if field.errors %}
-				<div class="alert alert-error">
-					{{ field.errors }}
-				</div>
-			{% endif %}
-			<label class="control-label" for="id_{{ field.html_name }}">
-				{{ field.label }}
-			</label>
-			 <div class="controls">
-			  {{ field }}
-			</div>
-		{% endfor %}
-
-		<div class="control-group">
-			<div class="controls">
-				<button type="submit" class="btn btn-primary" name="postaction" value="Save" >Save</button>
-				<button type="submit" class="btn btn-primary" name="postaction" value="Save &amp; Back" >Save &amp; Back</button>
-				<a href="{% url blog:post-list %}" class="btn btn-warning">Cancel</a>
-			</div>
-		  </div>
-		</form>
+{% block admin-content %}
+<form method="post" action="" class="form-horizontal">
+	{% if form.non_field_errors %}
+		<div class="alert alert-error">
+			{{ form.non_field_errors }}
+		</div>
+	{% endif %}
+{% for field in form %}
+	{% if field.errors %}
+		<div class="alert alert-error">
+			{{ field.errors }}
+		</div>
+	{% endif %}
+	<label class="control-label" for="id_{{ field.html_name }}">
+		{{ field.label }}
+	</label>
+	 <div class="controls">
+	  {{ field }}
 	</div>
-</div>
+{% endfor %}
+
+<div class="control-group">
+	<div class="controls">
+		<button type="submit" class="btn btn-primary" name="postaction" value="Save" >Save</button>
+		<button type="submit" class="btn btn-primary" name="postaction" value="Save &amp; Back" >Save &amp; Back</button>
+		<a href="{% url blog:post-list %}" class="btn btn-warning">Cancel</a>
+	</div>
+  </div>
+</form>
 {% endblock %}
