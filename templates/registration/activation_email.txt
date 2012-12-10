@@ -6,4 +6,4 @@ http://{{ site.domain }}{% url registration_activate activation_key=activation_k
 
 Kind Regards
 --
-{{ site.doname }}
+http://{{ site.domain }}
