@@ -14,7 +14,7 @@
 			{% endif %}
 			
 		</li>
-		{% if post.id %}
+		{% if post.id and user.is_authenticated %}
 			<li>
 				<a href="{% url blog:post-editform pk=post.id %}">
 					Edit this post&nbsp;

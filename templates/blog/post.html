@@ -3,12 +3,9 @@
 	{% include "blog/_partials/post.html" %}
 {% endblock %}
 {% block post-content %}
-{% if user.is_authenticated %}
 <div class="container-fluid">
 	<div class="row-fluid">
 		{% include "blog/_partials/post-content-menu.html" %}
 	</div>
 </div>
-
-{% endif %}
 {% endblock %}
