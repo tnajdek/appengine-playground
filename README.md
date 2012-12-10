@@ -3,14 +3,16 @@ What is it?
 
 Instant Potato Soup is a trivial, ultra-simple blogging software created for  research/learning purposes. It makes use of a non-rel version of Django and can be deployed to [app engine](https://appengine.google.com/) with 4 simple steps.
 
-Functionality is very limited and as-is this application is probably useless for production.
+Functionality is very limited and as-is this application is probably useless for production. **Please note** that there is no concept of ACLs or permissions in this software i.e. every registered user can modify every post and registration is fully automated.
 
 Features
 ========
 
 * Create/Edit/Delete posts
+* __All__ registered users have read/write access to all posts
 * Support for markdown
 * Support for social login
+* Support for automatic registration with email-based activation
 
 Instructions (Just add water!)
 ==============================
