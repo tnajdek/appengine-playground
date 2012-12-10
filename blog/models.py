@@ -9,7 +9,7 @@ class Category(models.Model):
 class Post(models.Model):
 	VISIBILITY_OPTIONS = (
 		(0, 'Private'),
-		(1, 'Visible to registered users'),
+		(1, 'Registered Users only'),
 		(2, 'Public')
 	)
 	title = models.CharField(max_length=200)

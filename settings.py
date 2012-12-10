@@ -104,4 +104,4 @@ except ImportError:
 	import sys
 	print >>sys.stderr, 'Could not import from sensitive_settings, social login will not work'
 
-DEBUG = False
+DEBUG = True

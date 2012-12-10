@@ -1,9 +1,36 @@
 from django.views.generic import *
 from django.core.urlresolvers import reverse
-from django.conf import settings
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from social_auth import backends
+# from django.db.models import Q
+
+
+class FilteredListView(ListView):
+	def get_queryset(self):
+		if(self.request.user.is_authenticated()):
+			# Sadly no support for OR filters in appengine :(
+			# query = Q(visibility__in=[1, 2]) | Q(visibility=0, author=self.request.user)
+			# nope
+			# self.model.objects.all().exclude(~Q(author=self.request.user), visibility=0)
+			return self.model.objects.filter(visibility__in=[1, 2])
+		else:
+			return self.model.objects.filter(visibility=2)
+
+
+class FilteredDetailView(DetailView):
+	def get_object(self):
+		user = self.request.user
+		object = super(FilteredDetailView, self).get_object()
+		if(object.visibility == 2):
+			return object
+		if(user.is_authenticated and object.visibility == 1):
+			return object
+		if(user.is_authenticated and object.visibility == 0 and object.author == user):
+			return object
+		raise Http404(_(u"No %(verbose_name)s found matching the query")
+			% {'verbose_name': queryset.model._meta.verbose_name})
 
 
 class SuccessUrlMixin(object):

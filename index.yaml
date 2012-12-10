@@ -20,6 +20,12 @@ indexes:
   - name: __key__
     direction: desc
 
+- kind: blog_post
+  properties:
+  - name: visibility
+  - name: date_created
+    direction: desc
+
 - kind: blog_tag
   properties:
   - name: __key__

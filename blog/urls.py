@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 from django.views.generic import ListView, DetailView, TemplateView
 from models import Post
 from forms import PostForm
-from views import CreateView, UpdateView, DeleteView, admin_home
+from views import CreateView, UpdateView, DeleteView, FilteredListView, FilteredDetailView, admin_home
 from django.contrib.auth.decorators import login_required
 
 # Django 1.3 doesn't get to be lazy!
@@ -37,13 +37,13 @@ urlpatterns = patterns('',
 		)), name="post-deleteform"
 	),
 	url(r'^admin/$', admin_home, name="admin"),
-	url(r'^$', ListView.as_view(
+	url(r'^$', FilteredListView.as_view(
 		paginate_by=5,
 		model=Post,
 		template_name="blog/index.html"
 		), name="index"
 	),
-	url(r'^(?P<slug>[a-z0-9\-]+)/$', DetailView.as_view(
+	url(r'^(?P<slug>[a-z0-9\-]+)/$', FilteredDetailView.as_view(
 		model=Post,
 		slug_field='permalink',
 		template_name="blog/post.html"
